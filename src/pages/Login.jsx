@@ -43,15 +43,14 @@ function Login() {
     //     //   setAuth(true);
     //     // }
 
-    //     console.log(res);
+    //     // console.log(res);
     //     sessionStorage.setItem("customerId", res.data.userId);
     //     sessionStorage.setItem("jwt", "Bearer " + res.data.token);
     //     console.log(sessionStorage.getItem("jwt"));
 
     //     dispatch({ type: "login" });
     //     // navigate('/cart');
-    //     // after successful login, go to the previous page.
-    //     navigate(-1);
+    //     navigate(-1); // go to the previous page
     //   })
     //   .catch((error) => console.log(error));
   };

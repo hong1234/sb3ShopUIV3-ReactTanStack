@@ -8,7 +8,6 @@ export async function userLogin(creds) {
       "Content-Type": "application/json",
     },
   };
-
   const res = await axios.post(`${loginUrl}`, creds, options);
   return res.data;
 }

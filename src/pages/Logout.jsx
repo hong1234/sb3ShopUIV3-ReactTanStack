@@ -8,11 +8,10 @@ function Logout() {
   const { dispatch } = useContext(AppContext);
 
   useEffect(() => {
-    sessionStorage.setItem("customerId", "");
-    sessionStorage.setItem("jwt", "");
+    sessionStorage.removeItem("customerId");
+    sessionStorage.removeItem("jwt");
     dispatch({ type: "logout" });
     navigate("/");
-    // navigate(-1);
   }, []);
 
   return (
