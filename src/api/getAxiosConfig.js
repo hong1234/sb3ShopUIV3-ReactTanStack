@@ -7,3 +7,7 @@ export const getAxiosConfig = () => {
     },
   };
 };
+
+export function getCustomerId() {
+  return sessionStorage.getItem("customerId");
+}

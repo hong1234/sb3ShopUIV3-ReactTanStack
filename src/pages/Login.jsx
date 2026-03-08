@@ -23,7 +23,7 @@ function Login() {
         // console.log(data);
         sessionStorage.setItem("customerId", data.userId);
         sessionStorage.setItem("jwt", "Bearer " + data.token);
-        // console.log(sessionStorage.getItem("jwt"));
+        console.log(sessionStorage.getItem("jwt"));
         dispatch({ type: "login" });
         // navigate('/cart');
         navigate(-1); // go to the previous page

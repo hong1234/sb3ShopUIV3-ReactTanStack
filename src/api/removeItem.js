@@ -1,8 +1,7 @@
 import axios from "axios";
-import { getAxiosConfig } from "./getAxiosConfig";
+import { getAxiosConfig, getCustomerId } from "./getAxiosConfig";
 
 const cartUrl = "http://localhost:8000/api/v1/carts/";
-const customerId = sessionStorage.getItem("customerId");
 
 export async function removeItem(productId) {
   const itemDTO = {
@@ -11,7 +10,7 @@ export async function removeItem(productId) {
   };
 
   const res = await axios.put(
-    `${cartUrl}${customerId}` + "/items",
+    `${cartUrl}` + getCustomerId() + "/items",
     itemDTO,
     getAxiosConfig(),
   );
