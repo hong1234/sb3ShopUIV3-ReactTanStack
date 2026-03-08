@@ -19,7 +19,13 @@ import Order from "./pages/Order";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false, // default: true
+    },
+  },
+});
 
 const router = createBrowserRouter([
   {
@@ -66,11 +72,11 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  // <StrictMode>
-  <ContextProvider>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-  </ContextProvider>,
-  // </StrictMode>,
+  <StrictMode>
+    <ContextProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </ContextProvider>
+  </StrictMode>,
 );

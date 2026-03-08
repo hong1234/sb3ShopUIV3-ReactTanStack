@@ -10,9 +10,13 @@ function Login() {
   //   username: "admin",
   //   password: "admin",
   // });
+  // const user = {
+  //   username: "admin",
+  //   password: "admin",
+  // };
   const user = {
-    username: "admin",
-    password: "admin",
+    username: "hong",
+    password: "hong1234",
   };
   const navigate = useNavigate();
   const { dispatch } = useContext(AppContext);

@@ -18,11 +18,11 @@ const Detail = () => {
   return product == null ? null : (
     <div className="row">
       <img
-        className="col-12 col-sm-4 col-md-4"
+        className="col-12 col-sm-4 col-md-4 img-fluid"
         src={product.image}
         alt="photo"
       />
-      <div className="col-12 col-sm-8 col-md-8">
+      <div className="col-12 col-sm-8 col-md-8 px-4 py-2">
         {/* <div className="bg-primary text-white text-center p-1" /> */}
         <p className="card-title fw-bold">{product.title}</p>
         <p className="card-text">{product.description}</p>
