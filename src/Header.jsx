@@ -57,7 +57,12 @@ export function Header() {
           Shopping
         </button>
       </Link>
-      <Link to="/admin/new">
+      {/* <Link to="/admin/new">
+        <button type="button" className="btn btn-secondary"> 
+          Admin
+        </button>
+      </Link> */}
+      <Link to="/admin">
         <button type="button" className="btn btn-secondary">
           Admin
         </button>

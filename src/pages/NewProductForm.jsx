@@ -12,7 +12,6 @@ import { useNavigate } from "react-router";
 function NewProductForm() {
   const navigate = useNavigate();
   const { state } = useContext(AppContext);
-  const [isOpen, setIsOpen] = useState(false);
   const [titleInput, setTitleInput] = useState("");
   const [contentInput, setContentInput] = useState("");
 
@@ -29,10 +28,10 @@ function NewProductForm() {
   });
 
   const isLogin = () => {
-    if (!state.loggedIn) {
-      return false;
+    if (state.loggedIn) {
+      return true;
     }
-    return true;
+    return false;
   };
 
   const handleTitleChange = (e) => {
@@ -43,14 +42,9 @@ function NewProductForm() {
     setContentInput(e.currentTarget.value);
   };
 
-  const handleClickOpen = () => {
-    setIsOpen(true);
-  };
-
   const clearForm = () => {
     setTitleInput("");
     setContentInput("");
-    setIsOpen(false);
   };
 
   const handleSubmit = (e) => {
@@ -82,46 +76,34 @@ function NewProductForm() {
   // console.log("product-form rendering ..");
   return (
     <div>
-      <h5 className="bg-primary text-white text-center p-2">Admin</h5>
-      {isOpen ? (
-        <form className="" onSubmit={handleSubmit}>
-          <div className="col-12 col-sm-12 col-md-6">
-            <label className="form-label">Title:</label>
-            <input
-              type="text"
-              name="title"
-              value={titleInput}
-              onChange={handleTitleChange}
-              className="form-control"
-            />
-          </div>
-          <div className="col-12 col-sm-12 col-md-6">
-            <label className="form-label">Description:</label>
-            <input
-              type="text"
-              name="content"
-              value={contentInput}
-              onChange={handleContentChange}
-              className="form-control"
-            />
-          </div>
-          <div className="">
-            <button type="submit" className="btn btn-primary">
-              Add Product
-            </button>
-          </div>
-        </form>
-      ) : (
+      {/* <h5 className="bg-primary text-white text-center p-2">Admin</h5> */}
+      <form className="" onSubmit={handleSubmit}>
+        <div className="col-12 col-sm-12 col-md-6">
+          <label className="form-label">Title:</label>
+          <input
+            type="text"
+            name="title"
+            value={titleInput}
+            onChange={handleTitleChange}
+            className="form-control"
+          />
+        </div>
+        <div className="col-12 col-sm-12 col-md-6">
+          <label className="form-label">Description:</label>
+          <input
+            type="text"
+            name="content"
+            value={contentInput}
+            onChange={handleContentChange}
+            className="form-control"
+          />
+        </div>
         <div className="">
-          <button
-            type="button"
-            onClick={handleClickOpen}
-            className="btn btn-primary"
-          >
-            New Product
+          <button type="submit" className="btn btn-primary">
+            Add Product
           </button>
         </div>
-      )}
+      </form>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 // import { useState } from "react";
+import { useEffect } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router";
 import { AppContext } from "../AppContext";
@@ -7,8 +8,8 @@ import { userLogin } from "../api/userLogin";
 
 function Login() {
   // const [user, setUser] = useState({
-  //   username: "admin",
-  //   password: "admin",
+  //   username: "",
+  //   password: "",
   // });
   // const user = {
   //   username: "admin",
@@ -19,7 +20,14 @@ function Login() {
     password: "hong1234",
   };
   const navigate = useNavigate();
-  const { dispatch } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
+
+  const isLogin = () => {
+    if (state.loggedIn) {
+      return true;
+    }
+    return false;
+  };
 
   const loginSubmitHandler = () => {
     userLogin(user)
@@ -27,10 +35,9 @@ function Login() {
         // console.log(data);
         sessionStorage.setItem("customerId", data.userId);
         sessionStorage.setItem("jwt", "Bearer " + data.token);
-        console.log(sessionStorage.getItem("jwt"));
+        // console.log(sessionStorage.getItem("customerId"));
+        // console.log(sessionStorage.getItem("jwt"));
         dispatch({ type: "login" });
-        // navigate('/cart');
-        navigate(-1); // go to the previous page
       })
       .catch((error) => {
         console.log("Error:", error);
@@ -53,11 +60,16 @@ function Login() {
     //     console.log(sessionStorage.getItem("jwt"));
 
     //     dispatch({ type: "login" });
-    //     // navigate('/cart');
-    //     navigate(-1); // go to the previous page
     //   })
     //   .catch((error) => console.log(error));
   };
+
+  useEffect(() => {
+    if (isLogin()) {
+      navigate(-1); // go to the previous page
+      // navigate('/cart');
+    }
+  });
 
   return (
     <>

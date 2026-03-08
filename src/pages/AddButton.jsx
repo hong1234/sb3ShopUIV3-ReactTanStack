@@ -15,12 +15,10 @@ export default function AddButton({ productId }) {
   const { state, dispatch } = useContext(AppContext);
 
   const isLogin = () => {
-    // console.log('check login ...');
-    if (!state.loggedIn) {
-      // navigate('/login');
-      return false;
+    if (state.loggedIn) {
+      return true;
     }
-    return true;
+    return false;
   };
 
   //   const findQty = (cartItems, id) => {

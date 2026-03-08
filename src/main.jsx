@@ -13,11 +13,13 @@ import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
 // import Checkout from "./pages/Checkout";
 import Home from "./pages/Home";
-import NewProductForm from "./pages/NewProductForm";
 import Detail from "./pages/Detail";
 import Order from "./pages/Order";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
+import Admin from "./pages/Admin";
+import NewProduct from "./pages/NewProduct";
+import NewProductForm from "./pages/NewProductForm";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,9 +47,23 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
+      // {
+      //   path: "/admin/new",
+      //   element: <NewProductForm />,
+      // },
       {
-        path: "/admin/new",
-        element: <NewProductForm />,
+        path: "/admin",
+        element: <Admin />,
+        children: [
+          {
+            index: true,
+            element: <NewProduct />,
+          },
+          {
+            path: "/admin/new",
+            element: <NewProductForm />,
+          },
+        ],
       },
       {
         path: "/shop/products",
