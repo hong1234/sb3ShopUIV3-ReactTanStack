@@ -10,7 +10,6 @@ export async function addItem(productId) {
   };
 
   const res = await axios.put(
-    // `${cartUrl}${customerId}` + "/items",
     `${cartUrl}` + getCustomerId() + "/items",
     itemDTO,
     getAxiosConfig(),
